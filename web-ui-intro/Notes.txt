@@ -1,0 +1,120 @@
+
+
+ ui     => data + style + intractivity
+ web-ui => html + css   + javascript
+
+
+
+ why we need javascript in HTML-page ?
+
+
+
+     using browser provided apis, 
+     javascript programs can do any dynamic actions
+
+     browser apis ==> w3c recommendations, implemented natively
+
+     e.g  DOM, XHR, ....
+
+    https://developer.mozilla.org/en-US/docs/Web/API
+
+    Using DOM Api
+    -------------
+     -> can create,retreive,update and delete HTML elements
+     -> can change element's inner content
+     -> can change element's style
+     -> can change element's attributes/properties
+     -> can listen events on element(s)
+     -> can validate form-fields before submit
+     -> can create rich ui-components like calendar,auto-complete fields...
+
+    using Timer Api
+    ---------------
+     -> can perform any actions on timeout/time-interval
+
+    using XHR / Fetch Api
+    ----------------------
+     -> can send async HTTP-request  to api-server.
+
+
+---------------------------------------------------------------------------------
+challenges / limitations while working browser-apis with plain-javascript
+---------------------------------------------------------------------------------
+
+    -> browser compatability issues
+    -> memory issues ( i.e clean un-used DOM elements)
+    -> performance issues  ( i.e should keep minimal DOM changes)
+    -> code re-usability / organization issues ( i.e write re-usable code )
+    ...
+
+
+    legacy solution(s)
+
+    => server-side page technologies => jsp, asp, php ,..
+
+    limitations with server-side-page tech:
+
+    => on every request, server-side-programs must re-construct page keeping client's state
+    => on every response , browser re-loads current page.
+    => on every response , transfering same static resources ( like css , images , fonts ), increares n/w b/w
+
+    modern solution(s)
+
+    => using browser-side page technologies
+
+        how ?
+
+        -> modern-browser(s) with standard apis
+        -> advanced javascript ( e.g es6,es7 features..)
+        +
+        -> many third-party's javascript lib & frameworks
+
+    ------------------------------------------------------------------------------
+    third-party's javascript lib & frameworks
+    ------------------------------------------------------------------------------
+
+    1. jquery.js -> it's DOM & XHR utility library
+
+    Model–view–controller pattern based lib & frameworks
+
+    2. backbone.js
+    3. knockout.js
+    4. Dojo toolkit
+    5. Ext.js from sencha ( commercial)
+    6. Angular.js  from google community
+    ....
+
+    UI-component pattern based lib & frameworks
+
+    7. react.js  ( our foucs )
+    8. angular
+    9. vue
+
+    ..
+    -------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
