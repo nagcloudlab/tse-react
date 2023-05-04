@@ -38,9 +38,10 @@ class App extends React.Component{
           <button className='btn btn-dark' onClick={e=>this.changeMessage(e,"good morning")}>GM</button>
           <button className='btn btn-dark' onClick={e=>this.changeMessage(e,"good noon")}>GN</button>
           <button className='btn btn-dark' onClick={e=>this.changeMessage(e,"good evening")}>GE</button>
+          <button className='btn btn-danger' onClick={e=>this.changeMessage(e,"")}>Remove Alert</button>
         </div>
         <hr/>
-        <Alert value={message}/>
+        {message && <Alert value={message}/>}
       </div>
     )
   }
