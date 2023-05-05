@@ -7,6 +7,7 @@ import ErrorBoundary from './components/ErrorBoundary'
 import List from './components/List'
 import Training from './components/Training'
 import RenderProps from './components/RenderProps'
+import Box from './components/Box'
 
 export default class extends Component {
   render() {
@@ -27,7 +28,30 @@ export default class extends Component {
 
         {/* <Training title="Training" /> */}
 
-        <RenderProps />
+        {/* <RenderProps /> */}
+
+        <Box
+          renderItems={() => {
+            return (
+              <div>
+                <ul>
+                  <li>food 1</li>
+                  <li>food 2</li>
+                </ul>
+              </div>
+            )
+          }}
+        />
+
+        <Box
+          renderItems={() => {
+            return (
+              <div className='alert alert-info'>
+                Have good weekend
+              </div>
+            )
+          }}
+        />
 
 
 
