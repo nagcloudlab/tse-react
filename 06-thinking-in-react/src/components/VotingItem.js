@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import styles from './VotingItem.module.css'
 
 export default class VotingItem extends Component {
     handleUpVote = (e) => {
@@ -12,16 +13,18 @@ export default class VotingItem extends Component {
     render() {
         let { value, votes } = this.props
         return (
-            <div className='card'>
-                <div className={votes < 0 ? 'card-body bg-warning' : 'card-body'}>
-                    <div className='d-flex justify-content-between'>
-                        <div className='display-4'>{value}</div>
-                        <div className='display-6 text-danger'>{votes}</div>
-                    </div>
-                    <hr />
-                    <div className='d-flex justify-content-between'>
-                        <button onClick={e => this.handleUpVote(e)} className='btn btn-primary'>Vote</button>
-                        <button onClick={e => this.handleDownVote(e)} className='btn btn-danger'>Unvote</button>
+            <div className={styles.item}>
+                <div className='card'>
+                    <div className={votes < 0 ? 'card-body bg-warning' : 'card-body'}>
+                        <div className='d-flex justify-content-between'>
+                            <div className='display-5'>{value}</div>
+                            <div className='display-6 text-danger'>{votes}</div>
+                        </div>
+                        <hr />
+                        <div className='d-flex justify-content-between'>
+                            <button onClick={e => this.handleUpVote(e)} className='btn btn-primary'>Vote</button>
+                            <button onClick={e => this.handleDownVote(e)} className='btn btn-danger'>Unvote</button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -8,6 +8,7 @@ export default class VotingApp extends Component {
         votingItems: [
             "react.js",
             "angular.js",
+            "vue.js",
         ],
         votingLines: []
     }
@@ -30,7 +31,6 @@ export default class VotingApp extends Component {
         }
         this.setState({ votingLines })
     }
-
 
     renderVotingItems(votingItems) {
         return votingItems.map((votingItem, index) => {
