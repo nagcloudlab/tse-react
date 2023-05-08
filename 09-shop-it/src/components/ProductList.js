@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Product from "./Product";
 
-const ProductList = () => {
+const ProductList = ({ onBuy }) => {
   const [products, setProducts] = useState([
     {
       id: 1,
@@ -23,7 +23,7 @@ const ProductList = () => {
   const renderProduct = (product) => {
     return (
       <div className="list-group-item" key={product.id}>
-        <Product value={product} />
+        <Product value={product} onBuy={onBuy} />
       </div>
     );
   };

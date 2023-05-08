@@ -3,6 +3,7 @@ const Header = (props) => {
   return (
     <header>
       <div className="display-1">{title}</div>
+      <hr />
     </header>
   );
 };
