@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import classNames from "classnames";
 import Review from "./Review";
+import ReviewForm from "./ReviewForm";
 
 const Product = (props) => {
   const { value: product, onBuy } = props;
@@ -23,6 +24,17 @@ const Product = (props) => {
       },
     },
   ]);
+  const handleBuy = () => {
+    onBuy(product);
+  };
+  const handleNewReview = (review) => {
+    console.log(review);
+    setReviews([...reviews, review]);
+  };
+  const handleTabChange = (event, tab) => {
+    event.preventDefault();
+    setCurrentTab(tab);
+  };
   const renderReviews = () => {
     return reviews.map((rev, index) => {
       return <Review value={rev} key={index} />;
@@ -35,13 +47,15 @@ const Product = (props) => {
       case 2:
         return <div>Not Yet</div>;
       case 3:
-        return <div>{renderReviews()}</div>;
+        return (
+          <div>
+            {renderReviews()}
+            <ReviewForm onNewReview={(review) => handleNewReview(review)} />
+          </div>
+        );
       default:
         return null;
     }
-  };
-  const handleBuy = () => {
-    onBuy(product);
   };
   return (
     <div className="row">
@@ -66,8 +80,8 @@ const Product = (props) => {
                 "nav-link": true,
                 active: currentTab === 1,
               })}
-              href="#"
-              onClick={(e) => setCurrentTab(1)}
+              href="/"
+              onClick={(e) => handleTabChange(e, 1)}
             >
               Description
             </a>
@@ -75,8 +89,8 @@ const Product = (props) => {
           <li className="nav-item">
             <a
               className={`nav-link ${currentTab === 2 ? "active" : ""}`}
-              href="#"
-              onClick={(e) => setCurrentTab(2)}
+              href="/"
+              onClick={(e) => handleTabChange(e, 2)}
             >
               Specfication
             </a>
@@ -84,8 +98,8 @@ const Product = (props) => {
           <li className="nav-item">
             <a
               className={`nav-link ${currentTab === 3 ? "active" : ""}`}
-              href="#"
-              onClick={(e) => setCurrentTab(3)}
+              href="/"
+              onClick={(e) => handleTabChange(e, 3)}
             >
               Reviews
             </a>

@@ -1,0 +1,32 @@
+
+upcoming topics
+----------------------------------------------------------------
+
+==> bad navigation(s) on single-page-application
+
+    solution:
+
+        => routing / navigation packages
+
+            e.g react-router
+
+==> state management on components is bad
+
+    solution:
+
+        => state management libraries
+
+            e.g Redux,Mobx,Xstate
+
+==> form-management
+
+    solution:
+
+        e.g . https://formik.org/
+
+==> Styled components
+
+        e.g styled components
+
+==> React + Backend-APIs
+
