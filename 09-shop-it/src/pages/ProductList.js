@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Product from "./Product";
+import Product from "../components/Product";
 
 const ProductList = ({ onBuy }) => {
   const [products, setProducts] = useState([

@@ -1,6 +1,6 @@
 import React from "react";
 
-function CartView({ value: cart }) {
+function CartView({ value: cart = [] }) {
   const renderCartLines = () => {
     return cart.map((cartLine, index) => {
       return (
