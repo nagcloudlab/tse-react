@@ -4,11 +4,11 @@ import { Outlet, NavLink } from "react-router-dom";
 import Header from "../components/Header";
 import CartBadge from "../components/CartBadge";
 
-export default function RootLayout({ cart, message }) {
+export default function RootLayout() {
   return (
     <div className="container">
       <Header title="shop-IT" />
-      <CartBadge value={cart.length} />
+      <CartBadge />
       <hr />
       <ul className="nav nav-pills">
         <li className="nav-item">
@@ -33,7 +33,6 @@ export default function RootLayout({ cart, message }) {
         </li>
       </ul>
       <hr />
-      {message}
       <Outlet />
     </div>
   );

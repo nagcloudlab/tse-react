@@ -1,35 +1,64 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classNames from "classnames";
 import Review from "./Review";
 import ReviewForm from "./ReviewForm";
+import { useDispatch, useSelector } from "react-redux";
 
 const Product = (props) => {
-  const { value: product, onBuy } = props;
+  const { value: product } = props;
+
+  const dispatch = useDispatch();
+  const cartLine = useSelector((state) => state.cart[product.id] || {});
+  const reviews = useSelector((state) => state.reviews[product.id] || []);
   const [currentTab, setCurrentTab] = useState(1);
-  const [reviews, setReviews] = useState([
-    {
-      rating: 4,
-      comment: "I love this product",
-      user: {
-        id: 1,
-        name: "John Doe",
-      },
-    },
-    {
-      rating: 3,
-      comment: "I like this product",
-      user: {
-        id: 1,
-        name: "Nag",
-      },
-    },
-  ]);
+
+  useEffect(() => {
+    if (currentTab === 3) {
+      // load reviews of this product from backend
+      let reviews = [
+        {
+          rating: 4,
+          comment: "I love this product",
+          user: {
+            id: 1,
+            name: "John Doe",
+          },
+        },
+        {
+          rating: 3,
+          comment: "I like this product",
+          user: {
+            id: 1,
+            name: "Nag",
+          },
+        },
+      ]
+      dispatch({ type: 'LOAD_REVIEWS', payload: { productId: product.id, reviews } })
+    }
+  }, [currentTab])
+
   const handleBuy = () => {
-    onBuy(product);
+    const action = {
+      type: 'ADD_TO_CART',
+      payload: {
+        id: product.id,
+        name: product.name,
+        price: product.price,
+      }
+    }
+    dispatch(action);
   };
   const handleNewReview = (review) => {
-    console.log(review);
-    setReviews([...reviews, review]);
+    // POST new review backend...
+    // after success response from backend & dispatch action
+    const action = {
+      type: 'ADD_NEW_REVIEW',
+      payload: {
+        productId: product.id,
+        review
+      }
+    }
+    dispatch(action);
   };
   const handleTabChange = (event, tab) => {
     event.preventDefault();
@@ -70,8 +99,9 @@ const Product = (props) => {
           disabled={!product.isAvailable}
           className="btn btn-primary"
         >
-          Buy
+          Buy ({cartLine.quantity || 0})
         </button>
+        <div className="text text-warning">{cartLine.message}</div>
         <br />
         <ul className="nav nav-tabs">
           <li className="nav-item">

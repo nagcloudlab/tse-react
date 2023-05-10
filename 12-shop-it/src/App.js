@@ -12,25 +12,15 @@ import CartView from "./pages/CartView";
 import NotFound from "./components/NotFound";
 
 export default function App() {
-  const [cart, setCart] = useState([]);
-  const [message, setMessage] = useState("");
-  const addToCart = (product) => {
-    let productIndex = cart.findIndex((p) => p.id === product.id);
-    if (productIndex === -1) setCart([...cart, product]);
-    else {
-      setMessage("Product already in cart");
-      setTimeout(() => setMessage(""), 1000);
-    }
-  };
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<RootLayout cart={cart} message={message} />}>
+      <Route path="/" element={<RootLayout />}>
         <Route index element={<Home />} />
         <Route
           path="products"
-          element={<ProductList onBuy={(product) => addToCart(product)} />}
+          element={<ProductList />}
         />
-        <Route path="cart" element={<CartView value={cart} />} />
+        <Route path="cart" element={<CartView />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     )
