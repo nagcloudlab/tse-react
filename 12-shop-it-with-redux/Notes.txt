@@ -1,0 +1,14 @@
+
+
+
+
+steps to work work redux
+-------------------------
+
+=> know the UI state
+=> know the actions which cause state change
+=> process the actions with reducer(s)
+=> create the store with reducer(s)
+=> dispatch action to trigger state change
+=> subscribe to store to get new state
+

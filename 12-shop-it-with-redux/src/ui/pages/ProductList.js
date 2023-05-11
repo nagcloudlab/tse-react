@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Product from "../components/Product";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
-const ProductList = ({ }) => {
-  const products = useSelector(state => state.products)
+import { loadProducts } from "../../state/actions/products";
+
+const ProductList = ({}) => {
+  // const [products, setProducts] = useState([]);
+  const products = useSelector((state) => state.products);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadProducts());
+  }, []);
   const renderProduct = (product) => {
     return (
       <div className="list-group-item" key={product.id}>

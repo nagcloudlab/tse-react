@@ -3,6 +3,8 @@ import classNames from "classnames";
 import Review from "./Review";
 import ReviewForm from "./ReviewForm";
 import { useDispatch, useSelector } from "react-redux";
+import { loadReviews, addNewReview } from "../../state/actions/reviews";
+import { addToCart } from "../../state/actions/cart";
 
 const Product = (props) => {
   const { value: product } = props;
@@ -14,51 +16,15 @@ const Product = (props) => {
 
   useEffect(() => {
     if (currentTab === 3) {
-      // load reviews of this product from backend
-      let reviews = [
-        {
-          rating: 4,
-          comment: "I love this product",
-          user: {
-            id: 1,
-            name: "John Doe",
-          },
-        },
-        {
-          rating: 3,
-          comment: "I like this product",
-          user: {
-            id: 1,
-            name: "Nag",
-          },
-        },
-      ]
-      dispatch({ type: 'LOAD_REVIEWS', payload: { productId: product.id, reviews } })
+      dispatch(loadReviews(product.id));
     }
-  }, [currentTab])
+  }, [currentTab]);
 
   const handleBuy = () => {
-    const action = {
-      type: 'ADD_TO_CART',
-      payload: {
-        id: product.id,
-        name: product.name,
-        price: product.price,
-      }
-    }
-    dispatch(action);
+    dispatch(addToCart(product));
   };
   const handleNewReview = (review) => {
-    // POST new review backend...
-    // after success response from backend & dispatch action
-    const action = {
-      type: 'ADD_NEW_REVIEW',
-      payload: {
-        productId: product.id,
-        review
-      }
-    }
-    dispatch(action);
+    dispatch(addNewReview(product.id, review));
   };
   const handleTabChange = (event, tab) => {
     event.preventDefault();
