@@ -1,0 +1,29 @@
+
+
+How to automate test on React & Redux ?
+
+=> Arrange UNIT ( e.g component , reducer )
+=> Act on UNIT ( e.g trigger event )
+=> Assert the outcome
+
+how ?
+
+=> by using testing framework(s)
+
+    => Jest 
+
+To test react components we need additional utilities
+
+    => ReactTest utilities
+    => Enzyme
+    => @testing-library
+
+
+----------------------------------------------------------------
+
+Jest + @testing-library
+
+----------------------------------------------------------------
+
+
+
